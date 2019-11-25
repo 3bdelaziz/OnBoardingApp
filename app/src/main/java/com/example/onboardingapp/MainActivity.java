@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;
     private LinearLayout mDotsLayout;
-    private SliderAdapter mSliderAdapter;
     private TextView[] mDots;
     private Button mBackBtn;
     private Button mNextBtn;
@@ -30,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         mBackBtn = findViewById(R.id.prevBtn);
         mNextBtn = findViewById(R.id.nextBtn);
 
-        mSliderAdapter = new SliderAdapter(this);
-        mSlideViewPager.setAdapter(mSliderAdapter);
+        SliderAdapter sliderAdapter = new SliderAdapter(this);
+        mSlideViewPager.setAdapter(sliderAdapter);
 
         addDotsIndicator(0);
         mSlideViewPager.addOnPageChangeListener(changeListener);
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
 
         @Override
@@ -86,29 +84,28 @@ public class MainActivity extends AppCompatActivity {
                 mBackBtn.setVisibility(View.INVISIBLE);
 
                 mBackBtn.setText("");
-                mNextBtn.setText("Next");
+                mNextBtn.setText(R.string.next_text_button);
             } else if (mDots.length - 1 == position) {
                 mBackBtn.setEnabled(true);
                 mNextBtn.setEnabled(true);
 
                 mBackBtn.setVisibility(View.VISIBLE);
 
-                mBackBtn.setText("Back");
-                mNextBtn.setText("Finish");
+                mBackBtn.setText(R.string.back_text_button);
+                mNextBtn.setText(R.string.finish);
             } else {
                 mBackBtn.setEnabled(true);
                 mNextBtn.setEnabled(true);
 
                 mBackBtn.setVisibility(View.VISIBLE);
 
-                mBackBtn.setText("Back");
-                mNextBtn.setText("Next");
+                mBackBtn.setText(R.string.back_text_button);
+                mNextBtn.setText(R.string.next_text_button);
             }
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-
         }
     };
 }

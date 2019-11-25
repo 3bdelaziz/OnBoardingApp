@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">OnBoardingApp</string>
+    <string name="back_text_button">Back</string>
+    <string name="next_text_button">Next</string>
+    <string name="desc_text_text_view">Lorem ipsum dolor sit amet, consectetur asipiscing elit, sed do elusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="heading_text_text_view">HEADING</string>
+    <string name="finish">Finish</string>
 </resources>

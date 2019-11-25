@@ -13,26 +13,25 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class SliderAdapter extends PagerAdapter {
 
-    Context mContext;
-    LayoutInflater mLayoutInflater;
+    private Context mContext;
 
-    public SliderAdapter(Context context) {
+    SliderAdapter(Context context) {
         this.mContext = context;
     }
 
-    public int[] slideImage = {
+    private int[] slideImage = {
             R.drawable.eat_icon,
             R.drawable.sleep_icon,
             R.drawable.code_icon
     };
 
-    public String[] slideHeadings = {
+    private String[] slideHeadings = {
             "EAT",
             "SLEEP",
             "CODE"
     };
 
-    public String[] slideDescs = {
+    private String[] slideDescs = {
             "Lorem ipsum dolor sit amet, consectetur asipiscing elit, sed do elusmod tempor incididunt ut labore et dolore magna aliqua",
             "Lorem ipsum dolor sit amet, consectetur asipiscing elit, sed do elusmod tempor incididunt ut labore et dolore magna aliqua",
             "Lorem ipsum dolor sit amet, consectetur asipiscing elit, sed do elusmod tempor incididunt ut labore et dolore magna aliqua"
@@ -45,16 +44,17 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (RelativeLayout) object;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        mLayoutInflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert mLayoutInflater != null;
         View view = mLayoutInflater.inflate(R.layout.slide_layout, container, false);
 
-        ImageView slideImageView = (ImageView) view.findViewById(R.id.slide_image);
+        ImageView slideImageView = view.findViewById(R.id.slide_image);
         TextView slideHeadingTextView = view.findViewById(R.id.slide_heading);
         TextView slideDescTextView = view.findViewById(R.id.slide_desc);
 
